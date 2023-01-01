@@ -1,5 +1,4 @@
-// Strealizer Music ()
-// date: 01/01/2023
+// Strealizer Music (https://github.com/strealizer/strealizer_music.git)
 
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,11 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:strealizer_music/common.dart';
 import 'package:rxdart/rxdart.dart';
 
-const String appTitle = 'Realize Music';
+// App Config
+const String appTitle = 'Strealizer Music';
+
+// Stylesheets
+const mainColor = Color.fromARGB(255, 29, 29, 29);
 
 Future<void> main() async {
   await JustAudioBackground.init(
@@ -23,14 +26,6 @@ Future<void> main() async {
       home: MyApp(title: appTitle),
     ),
   );
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return const MaterialApp(
-  //     title: appTitle,
-  //     home: MyApp(title: appTitle),
-  //   );
-  // }
 }
 
 class MyApp extends StatefulWidget {
@@ -66,9 +61,20 @@ class MyAppState extends State<MyApp> {
       tag: MediaItem(
         id: '${_nextMediaId++}',
         album: "Yoasobi",
-        title: "Gonjou (群青)",
+        title: "Gonjou 「群青」",
         artUri: Uri.parse(
             "https://drive.google.com/uc?export=download&id=1E4TtmFK--8r_BdZtVLoXfNlt2E4FzzKx"),
+      ),
+    ),
+    AudioSource.uri(
+      Uri.parse(
+          "https://drive.google.com/uc?export=download&id=1wyPZ6Adh76g5WPf8ogtV2RDfbIPD5ebH"),
+      tag: MediaItem(
+        id: '${_nextMediaId++}',
+        album: "Yoasobi",
+        title: "Monster「怪物」",
+        artUri: Uri.parse(
+            "https://drive.google.com/uc?export=download&id=1L2wy-3OdSN9SFpyzJHAwhC2nWpfgsUBH"),
       ),
     ),
     // AudioSource.uri(
@@ -148,7 +154,10 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(appTitle)),
+      appBar: AppBar(
+        title: const Text(appTitle),
+        backgroundColor: mainColor,
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -303,18 +312,23 @@ class MyAppState extends State<MyApp> {
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
+        backgroundColor: mainColor,
         child: ListView(
           // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.symmetric(vertical: 40.0),
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Drawer Header'),
-            ),
+            // const DrawerHeader(
+            //   decoration: BoxDecoration(
+            //     color: Colors.blue,
+            //   ),
+            //   child: Text('Drawer Header'),
+            // ),
             ListTile(
-              title: const Text('Item 1'),
+              selected: true,
+              selectedTileColor: Color.fromARGB(255, 43, 43, 43),
+              textColor: Colors.white,
+              selectedColor: Colors.white,
+              title: const Text('Home'),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -323,7 +337,22 @@ class MyAppState extends State<MyApp> {
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              selectedTileColor: Color.fromARGB(255, 43, 43, 43),
+              textColor: Colors.white,
+              selectedColor: Colors.white,
+              title: const Text('Top Songs'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              selectedTileColor: Color.fromARGB(255, 43, 43, 43),
+              textColor: Colors.white,
+              selectedColor: Colors.white,
+              title: const Text('Playlists'),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -411,6 +440,10 @@ class ControlButtons extends StatelessWidget {
             icon: const Icon(Icons.skip_next),
             onPressed: player.hasNext ? player.seekToNext : null,
           ),
+        ),
+        IconButton(
+          icon: const Icon(Icons.favorite_border),
+          onPressed: () {},
         ),
         // TODO: hide adjust speed feature
         // StreamBuilder<double>(
