@@ -57,6 +57,17 @@ class MyAppState extends State<MyApp> {
     // ),
     AudioSource.uri(
       Uri.parse(
+          "https://drive.google.com/uc?export=download&id=1B5LuroUGnehb4Jcze7oeOq6mjwv5eWnA"),
+      tag: MediaItem(
+        id: '${_nextMediaId++}',
+        album: "Yoasobi",
+        title: "Ano Yume Wo Nazotte「あの夢をなぞって」",
+        artUri: Uri.parse(
+            "https://drive.google.com/uc?export=download&id=1LqAE7_XObWSPi8HwhbyToVeWk0_JXFvv"),
+      ),
+    ),
+    AudioSource.uri(
+      Uri.parse(
           "https://drive.google.com/uc?export=download&id=1S7wsDu1_BRtyNCkEUIEIZB1hZ2ryVYkG"),
       tag: MediaItem(
         id: '${_nextMediaId++}',
@@ -328,6 +339,7 @@ class MyAppState extends State<MyApp> {
               selectedTileColor: Color.fromARGB(255, 43, 43, 43),
               textColor: Colors.white,
               selectedColor: Colors.white,
+              leading: const Icon(Icons.home, color: Colors.white),
               title: const Text('Home'),
               onTap: () {
                 // Update the state of the app
@@ -340,7 +352,8 @@ class MyAppState extends State<MyApp> {
               selectedTileColor: Color.fromARGB(255, 43, 43, 43),
               textColor: Colors.white,
               selectedColor: Colors.white,
-              title: const Text('Top Songs'),
+              leading: const Icon(Icons.search, color: Colors.white),
+              title: const Text('Search'),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -352,7 +365,47 @@ class MyAppState extends State<MyApp> {
               selectedTileColor: Color.fromARGB(255, 43, 43, 43),
               textColor: Colors.white,
               selectedColor: Colors.white,
+              leading: Icon(Icons.playlist_play, color: Colors.white),
+              title: const Text('Recently Played'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              selectedTileColor: Color.fromARGB(255, 43, 43, 43),
+              textColor: Colors.white,
+              selectedColor: Colors.white,
+              leading: Icon(Icons.queue_music, color: Colors.white),
               title: const Text('Playlists'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              selectedTileColor: Color.fromARGB(255, 43, 43, 43),
+              textColor: Colors.white,
+              selectedColor: Colors.white,
+              leading: Icon(Icons.playlist_add, color: Colors.white),
+              title: const Text('Create Playlists'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              selectedTileColor: Color.fromARGB(255, 43, 43, 43),
+              textColor: Colors.white,
+              selectedColor: Colors.white,
+              leading: Icon(Icons.favorite, color: Colors.white),
+              title: const Text('Liked Songs'),
               onTap: () {
                 // Update the state of the app
                 // ...
